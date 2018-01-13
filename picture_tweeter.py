@@ -16,3 +16,9 @@ try:
 except twitter.TwitterHTTPError as twittererror:
     print('authentication failed :-\(')
 
+print('posting picture ' + pic_path + ' ...')
+try:
+    status = api.PostUpdate(status='', media=pic_path)
+except twitter.TwitterHTTPError as twittererror:
+    print('Failure !!!')
+
