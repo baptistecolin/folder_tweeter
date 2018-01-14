@@ -2,6 +2,7 @@
 import os, sys
 import json
 import re
+import random
 
 path = sys.argv[1]
 
@@ -24,6 +25,12 @@ else:
 # building a list of all the picture files that are in the specified folder
 all_pics = [ filename for filename in os.listdir(path) if re.match(r"(.)+.(png|jpg|JPG|PNG)$", filename) ]
 not_tweeted_yet_pics = [ filename for filename in all_pics if filename not in already_tweeted['data'] ] # it reads just like natural language, ain't that beautiful ?
+
+if len(not_tweeted_yet_pics) == 0:
+    print('Nothing left to tweet !')
+else:
+    chosen =  random.choice(not_tweeted_yet_pics)
+
 
 with open(".already_tweeted.json", 'w') as f:
     json.dump(already_tweeted, f)
