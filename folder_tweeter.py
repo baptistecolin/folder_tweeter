@@ -3,8 +3,10 @@ import os, sys
 import json
 import re
 import random
+from picture_tweeter import pic_tweet
 
 path = sys.argv[1]
+credentials = sys.argv[2]
 
 # managing the .already_tweeted.json file, that keeps track of what's have been tweeted so far
 if not(os.path.isfile("./.already_tweeted.json")):
@@ -30,8 +32,14 @@ if len(not_tweeted_yet_pics) == 0:
     print('Nothing left to tweet !')
 else:
     chosen =  random.choice(not_tweeted_yet_pics)
-
-
+    
+    pic_tweet(chosen, credentials)
+    # if it fails to send a tweet for some reason, the previous line should throw an error.
+    # Therefore, the line under here would not be executed and the picture would not be added
+    # to the .already_tweeted.json file.
+    already_tweeted['data'].append(chosen)
+    
+# updates the .already_tweeted.json file
 with open(".already_tweeted.json", 'w') as f:
     json.dump(already_tweeted, f)
 
