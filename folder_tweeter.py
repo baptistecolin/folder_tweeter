@@ -33,7 +33,7 @@ if len(not_tweeted_yet_pics) == 0:
 else:
     chosen =  random.choice(not_tweeted_yet_pics)
     
-    pic_tweet(chosen, credentials)
+    pic_tweet(path + chosen, credentials)
     # if it fails to send a tweet for some reason, the previous line should throw an error.
     # Therefore, the line under here would not be executed and the picture would not be added
     # to the .already_tweeted.json file.
