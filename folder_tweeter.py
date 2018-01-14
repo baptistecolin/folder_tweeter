@@ -3,6 +3,8 @@ import os, sys
 import json
 import re
 
+path = sys.argv[1]
+
 # managing the .already_tweeted.json file, that keeps track of what's have been tweeted so far
 if not(os.path.isfile("./.already_tweeted.json")):
     # if there's no such file, let's create an empty one
