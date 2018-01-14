@@ -23,6 +23,7 @@ else:
 
 # building a list of all the picture files that are in the specified folder
 all_pics = [ filename for filename in os.listdir(path) if re.match(r"(.)+.(png|jpg|JPG|PNG)$", filename) ]
+not_tweeted_yet_pics = [ filename for filename in all_pics if filename not in already_tweeted['data'] ] # it reads just like natural language, ain't that beautiful ?
 
 with open(".already_tweeted.json", 'w') as f:
     json.dump(already_tweeted, f)
